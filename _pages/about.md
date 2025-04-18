@@ -30,7 +30,7 @@ I am currently a first year PhD student in the CSE department of UC San Diego, w
 My research interests primarily lie in Computer Architecture, AI Accelerators, and Machine Leanrning Systems.
 <!-- , aimming for efficiently deploying AI algorithms in vareid hardware. -->
 
-Email: [zhy055@ucsd.edu](mailto:zhy055@ucsd.edu)
+**Email:** [zhy055@ucsd.edu](mailto:zhy055@ucsd.edu)
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
@@ -61,4 +61,20 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 
 ## Experience
 
-- Cambricon Technologies, IC Design Intern, 2022.3 - 2023.11.
+- **Cambricon Technologies**, 2024 - Present \\
+  IC Design Intern 
+
+- **University of Chinese Academy of Sciences (UCAS)**, 2021 - 2024 \\
+  M.E. in Computer Technology \\
+  <!-- Advisor: Prof. [Yunji Chen](https://novel.ict.ac.cn/ychen/) -->
+
+- **Shanghai Jiao Tong University (SJTU)**, 2017 - 2021 \\
+  B.S. in Physics (Zhiyuan Honors Program)
+
+
+## Experience
+
+- **Cambricon Technologies**, 2022.3 - 2023.11. \\
+  IC Design Intern, Architecture group
+
+<br>

@@ -4,11 +4,11 @@ layout: default
 <div class="post">
   <header class="post-header">
     <h1 class="post-title" style="display: flex; align-items: center; gap: 0.5em;">
-      <span class="font-weight-bold">{{ site.first_name }}</span>
+      <span class="font-weight-bold-title">{{ site.first_name }}</span>
       {% comment %} <span>{{ site.middle_name }}</span> {% endcomment %}
-      <span class="font-weight-bold">{{ site.last_name }}</span>
+      <span class="font-weight-bold-title">{{ site.last_name }}</span>
       {% if page.social %}
-        <span class="contact-icons" style="margin-left: 5em;">
+        <span class="contact-icons" style="margin-left: 2em;">
           {% include social.liquid %}
         </span>
       {% endif %}

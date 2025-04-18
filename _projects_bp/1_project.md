@@ -4,7 +4,7 @@ title: Us
 description: Memories
 img: assets/img/moment_us_bg.png
 importance: 1
-category: Fun
+category: fun
 related_publications: false
 ---
 
