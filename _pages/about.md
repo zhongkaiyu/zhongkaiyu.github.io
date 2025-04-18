@@ -30,7 +30,7 @@ I am currently a first year PhD student in the CSE department of UC San Diego, w
 My research interests primarily lie in Computer Architecture, AI Accelerators, and Machine Leanrning Systems.
 <!-- , aimming for efficiently deploying AI algorithms in vareid hardware. -->
 
-Email: zhy055@ucsd.edu
+Email: [zhy055@ucsd.edu](mailto:zhy055@ucsd.edu)
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
@@ -45,7 +45,7 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 <br>
 <br> -->
 
-### Education
+## Education
 
 - **University of California, San Diego (UCSD)**, 2024 - Present \\
   Ph.D. student in Computer Science & Engineering \\
@@ -59,6 +59,6 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
   B.S. in Physics (Zhiyuan Honors Program)
 
 
-### Experience
+## Experience
 
 - Cambricon Technologies, IC Design Intern, 2022.3 - 2023.11.
