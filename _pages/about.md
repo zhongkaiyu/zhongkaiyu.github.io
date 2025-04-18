@@ -61,19 +61,6 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 
 ## Experience
 
-- **Cambricon Technologies**, 2024 - Present \\
-  IC Design Intern 
-
-- **University of Chinese Academy of Sciences (UCAS)**, 2021 - 2024 \\
-  M.E. in Computer Technology \\
-  <!-- Advisor: Prof. [Yunji Chen](https://novel.ict.ac.cn/ychen/) -->
-
-- **Shanghai Jiao Tong University (SJTU)**, 2017 - 2021 \\
-  B.S. in Physics (Zhiyuan Honors Program)
-
-
-## Experience
-
 - **Cambricon Technologies**, 2022.3 - 2023.11. \\
   IC Design Intern, Architecture group
 
