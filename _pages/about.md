@@ -25,7 +25,7 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-I am currently a first year PhD student in the CSE department of UC San Diego, working with Prof.[Yufei Ding](https://picassolab.squarespace.com/yufei). Before coming to UCSD, I obtained my master's degree from Institute of Computing Technology, Chinese Academy of Sciences under supervision of Prof. [Yunji Chen](https://novel.ict.ac.cn/ychen/). Prior to that, I received my bachelor's degree from Shanghai Jiao Tong University.
+I am currently a first year PhD student in the CSE department of UC San Diego (since 2024), working with Prof.[Yufei Ding](https://picassolab.squarespace.com/yufei). Before coming to UCSD, I obtained my master's degree from Institute of Computing Technology, Chinese Academy of Sciences under supervision of Prof. [Yunji Chen](https://novel.ict.ac.cn/ychen/). Prior to that, I received my bachelor's degree from Shanghai Jiao Tong University.
 
 My research interests primarily lie in Computer Architecture, AI Accelerators, and Machine Leanrning Systems.
 <!-- , aimming for efficiently deploying AI algorithms in vareid hardware. -->
