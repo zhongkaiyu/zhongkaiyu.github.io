@@ -45,23 +45,20 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 <br>
 <br> -->
 
+<br>
 ## Education
-
 - **University of California, San Diego (UCSD)**, 2024 - Present \\
   Ph.D. student in Computer Science & Engineering \\
   <!-- Advisor: Prof. [Yufei Ding](https://picassolab.squarespace.com/yufei) -->
-
 - **University of Chinese Academy of Sciences (UCAS)**, 2021 - 2024 \\
   M.E. in Computer Technology \\
   <!-- Advisor: Prof. [Yunji Chen](https://novel.ict.ac.cn/ychen/) -->
-
 - **Shanghai Jiao Tong University (SJTU)**, 2017 - 2021 \\
   B.S. in Physics (Zhiyuan Honors Program)
 
-
+<br>
 ## Experience
-
 - **Cambricon Technologies**, 2022.3 - 2023.11. \\
   IC Design Intern, Architecture group
-
+  
 <br>

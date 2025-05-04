@@ -21,12 +21,12 @@ strong {
 
 li,
 p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .font-weight-bold,
 a {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .font-weight-bold-title {
@@ -788,6 +788,7 @@ footer.sticky-bottom {
         > em {
           border-bottom: 1px solid;
           font-style: normal;
+          font-weight: bold;
         }
 
         > span.more-authors {
