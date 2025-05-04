@@ -6,6 +6,42 @@
 // Dimensions
 $max-content-width: {{ site.max_width }};
 
+// #mapmyvisitors {
+//   width: 200px !important;
+//   height: 180px !important;
+//   max-width: 60%;
+//   margin: 0 auto;
+//   display: block;
+// }
+// @media (max-width: 400px) {
+//   #mapmyvisitors {
+//     width: 60% !important;
+//     height: 150px !important;
+//   }
+// }
+
+.map-container {
+  width: 600px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+.map-container > div,
+.map-container iframe {
+  width: 100% !important;
+  height: 180px !important;
+  display: block !important;
+}
+
+@media (max-width: 400px) {
+  .map-container {
+    width: 100%;
+  }
+  .map-container > div,
+  .map-container iframe {
+    height: 150px !important;
+  }
+}
+
 @import
   "variables",
   "themes",
