@@ -21,14 +21,14 @@ $max-content-width: {{ site.max_width }};
 // }
 
 .map-container {
-  width: 600px;
+  width: 700px;
   max-width: 90%;
   margin: 0 auto;
 }
 .map-container > div,
 .map-container iframe {
   width: 100% !important;
-  height: 180px !important;
+  // height: 150px !important;
   display: block !important;
 }
 
@@ -38,7 +38,7 @@ $max-content-width: {{ site.max_width }};
   }
   .map-container > div,
   .map-container iframe {
-    height: 150px !important;
+    height: 170px !important;
   }
 }
 
