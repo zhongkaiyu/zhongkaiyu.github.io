@@ -27,7 +27,9 @@ latest_posts:
 ---
 I am currently a first year PhD student in the CSE department of UC San Diego (since 2024), working with Prof.[Yufei Ding](https://sites.google.com/ucsd.edu/yufeiding/people/prof-yufei-ding). Before coming to UCSD, I obtained my master's degree from Institute of Computing Technology, Chinese Academy of Sciences under supervision of Prof. [Yunji Chen](https://novel.ict.ac.cn/ychen/). Prior to that, I received my bachelor's degree from Shanghai Jiao Tong University.
 
-My research interests primarily lie in Computer Architecture, AI Accelerators, and Machine Leanrning Systems.
+My research interests primarily lie in Computer Architecture, AI Accelerators, Machine Leanrning Systems, and AI for Chip Design.
+
+Also, shout-out to my roommate Zaifeng, who is an expert in kernels and systems. Check out his [homepage and research](https://panzaifeng.github.io).
 <!-- , aimming for efficiently deploying AI algorithms in vareid hardware. -->
 
 **Email:** [zhy055@ucsd.edu](mailto:zhy055@ucsd.edu)
