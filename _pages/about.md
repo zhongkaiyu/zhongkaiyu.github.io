@@ -60,9 +60,9 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 
 <br>
 ## Experience
-- **Samsung Semiconductor**, 2024.6 - 2024.9. \\
+- **Samsung Semiconductor**, 2025.6 - 2025.9. \\
   Research Intern, AGI Lab
-- **Cambricon Technologies**, 2022.3 - 2023.11. \\
+- **Cambricon Technologies**, 2022.3 - 2024.3. \\
   IC Design Intern, Architecture group
   
 <br>
