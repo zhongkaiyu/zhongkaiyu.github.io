@@ -415,6 +415,20 @@ ninja.data = [{
           window.open("mailto:%7A%68%79%30%35%35@%75%63%73%64.%65%64%75", "_blank");
         },
       },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/zhongkaiyu", "_blank");
+        },
+      },{
+        id: 'social-huggingface_username',
+        title: 'Huggingface_username',
+        section: 'Socials',
+        handler: () => {
+          window.open("", "_blank");
+        },
+      },{
         id: 'social-linkedin',
         title: 'LinkedIn',
         section: 'Socials',
