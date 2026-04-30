@@ -6,14 +6,13 @@ permalink: /
 
 profile:
   align: right
-  image: zhongkai.jpg
-  image_circular: true # crops the image to make it circular
+  image: zhongkai2_profile.jpg
+  image_circular: false # use a rounded-square profile image
   # more_info: >
-    # <p>La Jolla, CA, 92037</p>
+  # <p>La Jolla, CA, 92037</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
-
 
 announcements:
   enabled: false # includes a list of news items
@@ -25,11 +24,13 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
+
 I am currently a second-year PhD student in the CSE department of UC San Diego (since 2024), working with Prof.[Yufei Ding](https://sites.google.com/ucsd.edu/yufeiding/people/prof-yufei-ding). Before coming to UCSD, I obtained my master's degree from Institute of Computing Technology, Chinese Academy of Sciences, under the supervision of Prof. [Yunji Chen](https://novel.ict.ac.cn/ychen/). Prior to that, I received my bachelor's degree from Shanghai Jiao Tong University.
 
-My research interests primarily lie in Computer Architecture, AI Accelerators, Machine Learning Systems, and AI for Chip Design.
+My research centers on the co-evolution of LLM and hardware systems: I explore novel architectures and systems to accelerate LLM workloads, while harnessing LLMs to advance chip design. My work lies at the intersection of Computer Architecture, ML Systems, and AI4Chip.
 
 Also, shout-out to my roommate Zaifeng, who is an expert in kernels, systems, and "cooking". Check out his [homepage and research](https://panzaifeng.github.io).
+
 <!-- , aimming for efficiently deploying AI algorithms in vareid hardware. -->
 
 **Email:** [zhy055@ucsd.edu](mailto:zhy055@ucsd.edu)
@@ -47,8 +48,8 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 <br>
 <br> -->
 
-<br>
 ## Education
+
 - **University of California, San Diego (UCSD)**, 2024 - Present \\
   Ph.D. student in Computer Science & Engineering \\
   <!-- Advisor: Prof. [Yufei Ding](https://picassolab.squarespace.com/yufei) -->
@@ -58,11 +59,9 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 - **Shanghai Jiao Tong University (SJTU)**, 2017 - 2021 \\
   B.S. in Physics (Zhiyuan Honors Program)
 
-<br>
 ## Experience
+
 - **Samsung Semiconductor**, 2025.6 - 2025.9. \\
   Research Intern, AGI Lab
 - **Cambricon Technologies**, 2022.3 - 2024.3. \\
   IC Design Intern, Architecture group
-  
-<br>

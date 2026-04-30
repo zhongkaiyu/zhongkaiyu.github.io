@@ -1,6 +1,11 @@
 **/*.map
 **/*.min.css
 **/*.min.js
+.bundle/**
+.conda-ruby/**
+_site/**
+node_modules/**
+vendor/**
 assets/css/main.scss
 assets/js/distillpub/template.v2.js
 assets/js/search/*.js

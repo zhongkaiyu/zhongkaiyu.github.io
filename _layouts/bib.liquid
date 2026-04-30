@@ -184,14 +184,15 @@
     <div class="periodical">
       {{ entry.note | strip }}
     </div>
+    {% if entry.award %}
+      <div class="award-callout">
+        <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+        <span>{{ entry.award | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+      </div>
+    {% endif %}
 
     <!-- Links/Buttons -->
     <div class="links">
-      {% if entry.award %}
-        <a class="award btn btn-sm z-depth-0" role="button">
-          {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
-        </a>
-      {% endif %}
       {% if entry.abstract %}
         <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
       {% endif %}
@@ -337,13 +338,6 @@
           {% endif %}
         </div>
       {% endif %}
-    {% endif %}
-
-    {% if entry.award %}
-      <!-- Hidden Award block -->
-      <div class="award hidden d-print-inline">
-        <p>{{ entry.award | markdownify }}</p>
-      </div>
     {% endif %}
 
     {% if entry.abstract %}

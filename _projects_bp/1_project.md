@@ -11,6 +11,7 @@ related_publications: false
 **Our Important Moments.**
 
 ## Intresting Stuff in Shanghai
+
 <div class="row" justify-content-center text-center>
     <div class="col-sm-2"></div>
     <div class="col-sm-4 mt-3 mt-md-0">
@@ -62,6 +63,7 @@ related_publications: false
 <br>
 
 ## Changsha & Zhangjiajie
+
 <div class="row">
     <div class="col-sm-4 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/moment_us/changsha_wenheyou.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
@@ -78,7 +80,9 @@ related_publications: false
 <br>
 
 ## Amoy
+
 Where we first began to know each other
+
 <div class="row" justify-content-center text-center>
     <div class="col-sm-2"></div>
     <div class="col-sm-4 mt-3 mt-md-0">
@@ -89,4 +93,3 @@ Where we first began to know each other
     </div>
     <div class="col-sm-2"></div>
 </div>
-
