@@ -21,6 +21,7 @@
 .pub-filter-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.32rem;
   border-radius: 999px;
   border: 1.5px solid var(--global-theme-color);
@@ -40,14 +41,23 @@
     border-color 0.2s ease;
   white-space: nowrap;
   user-select: none;
+  // Reset iOS/Android default button appearance
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 
   .filter-dot {
+    display: block;
     width: 6px;
     height: 6px;
+    min-width: 6px;
+    min-height: 6px;
     border-radius: 50%;
-    background: var(--global-theme-color);
+    background: currentColor;
     flex-shrink: 0;
-    transition: transform 0.2s ease, background 0.2s ease;
+    transition: transform 0.2s ease;
   }
 
   &:hover {
@@ -92,11 +102,11 @@
 
 .publications ol.bibliography {
   li {
+    position: relative; // required for ::before left-border accent
     transition:
       opacity 0.28s ease,
       transform 0.28s ease,
       filter 0.28s ease,
-      box-shadow 0.28s ease,
       background 0.28s ease,
       padding-left 0.28s ease;
 
@@ -107,11 +117,23 @@
       transform: scale(0.99);
     }
 
+    // Left-border accent via ::before so it isn't clipped by overflow:hidden
+    // on Bootstrap grid columns (which kills box-shadow on mobile).
     &.pub-highlighted {
       padding-left: 0.75rem;
       background: rgba(164, 25, 44, 0.04);
       border-radius: 0 8px 8px 0;
-      box-shadow: -3px 0 0 var(--global-theme-color);
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 4px;
+        bottom: 4px;
+        width: 3px;
+        background: var(--global-theme-color);
+        border-radius: 2px;
+      }
     }
   }
 }
