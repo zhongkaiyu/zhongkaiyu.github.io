@@ -6,7 +6,7 @@ permalink: /
 
 profile:
   align: right
-  image: zhongkai2_profile.jpg
+  image: zhongkai3_profile.jpg
   image_circular: false # use a rounded-square profile image
   # more_info: >
   # <p>La Jolla, CA, 92037</p>
