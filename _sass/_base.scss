@@ -363,9 +363,11 @@ ul.task-list input[type="checkbox"] {
 
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
+    transition: color 0.18s ease, opacity 0.18s ease;
 
     &:hover {
-      color: var(--global-hover-color);
+      color: var(--global-theme-color);
+      opacity: 0.8;
     }
   }
 
@@ -375,7 +377,8 @@ ul.task-list input[type="checkbox"] {
     color: var(--global-theme-color);
 
     &:hover {
-      color: var(--global-hover-color);
+      color: var(--global-theme-color);
+      opacity: 0.75;
     }
   }
 
