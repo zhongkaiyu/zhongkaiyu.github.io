@@ -1,6 +1,11 @@
 ---
 ---
-<div class="row" {% if entry.category %}data-category="{{ entry.category }}"{% endif %}>
+<div
+  class="row"
+  {% if entry.category %}
+    data-category="{{ entry.category }}"
+  {% endif %}
+>
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
@@ -236,6 +241,9 @@
       {% endif %}
       {% if entry.code %}
         <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
+      {% endif %}
+      {% if page.permalink == '/publications/' and entry.key == 'yu2026patternschaosforecastingdata' %}
+        <a href="https://huggingface.co/datasets/core12345/MoE_expert_selection_trace" class="btn btn-sm z-depth-0" role="button">Code</a>
       {% endif %}
       {% if entry.poster %}
         {% if entry.poster contains '://' %}

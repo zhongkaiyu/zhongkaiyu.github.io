@@ -363,7 +363,9 @@ ul.task-list input[type="checkbox"] {
 
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
-    transition: color 0.18s ease, opacity 0.18s ease;
+    transition:
+      color 0.18s ease,
+      opacity 0.18s ease;
 
     &:hover {
       color: var(--global-theme-color);
