@@ -1,0 +1,16 @@
+<div class="honors-awards">
+  <ul>
+    {% for award in site.data.awards %}
+      <li>
+        <span class="ha-year">{{ award.year }}</span>
+        <span class="ha-name">
+          {% if award.url %}
+            <a href="{{ award.url }}" target="_blank" rel="noopener noreferrer">{{ award.name }}</a>
+          {% else %}
+            {{ award.name }}
+          {% endif %}
+        </span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

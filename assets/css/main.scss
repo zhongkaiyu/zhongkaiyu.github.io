@@ -42,6 +42,230 @@ $max-content-width: {{ site.max_width }};
   }
 }
 
+/* Honors & Awards list (homepage, under Selected Publications) */
+.honors-awards {
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem 0 1.5rem;
+  }
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    padding: 0.3rem 0;
+    line-height: 1.45;
+  }
+  .ha-year {
+    flex: 0 0 auto;
+    min-width: 3.1rem;
+    font-weight: 600;
+    color: var(--global-theme-color);
+    font-variant-numeric: tabular-nums;
+  }
+  .ha-name {
+    color: var(--global-text-color);
+    a {
+      color: var(--global-text-color);
+      &:hover {
+        color: var(--global-theme-color);
+      }
+    }
+  }
+}
+
+/* CV page — embedded PDF viewer */
+.cv-pdf-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cv-download-btn.btn {
+  align-self: flex-start;
+  color: var(--global-text-color);
+  border: 1px solid var(--global-text-color);
+  &:hover {
+    color: var(--global-theme-color);
+    border-color: var(--global-theme-color);
+  }
+}
+.cv-pdf-frame {
+  width: 100%;
+  height: 90vh;
+  min-height: 600px;
+  border: 1px solid var(--global-text-color-light);
+  border-radius: 6px;
+}
+@media (max-width: 576px) {
+  .cv-pdf-frame {
+    height: 75vh;
+    min-height: 420px;
+  }
+}
+
+/* ============================================================
+   "Us" moments gallery — aspect-preserving rows + romantic styling
+   Photos keep their TRUE aspect ratio: equal-height rows, natural
+   widths, wrap and center. No cropping, no stretching.
+   ============================================================ */
+.moments-page {
+  --rose: #e35d6a;
+  --row-h: 15rem;
+}
+:root[data-theme="dark"] .moments-page,
+html[data-theme="dark"] .moments-page {
+  --rose: #ff8fa3;
+}
+
+/* intro + outro lines */
+.moments-intro {
+  text-align: center;
+  color: var(--global-text-color-light);
+  font-size: 1.12rem;
+  line-height: 1.65;
+  max-width: 40rem;
+  margin: 0.25rem auto 2.6rem;
+}
+.moments-intro .heart,
+.moments-outro .heart {
+  color: var(--rose);
+}
+.moments-outro {
+  text-align: center;
+  color: var(--global-text-color-light);
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  font-size: 0.95rem;
+  margin: 2.6rem 0 0.5rem;
+}
+
+/* per-trip heading */
+.moments-album {
+  margin: 0 0 2.8rem;
+}
+.moments-album-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+.moments-heart {
+  color: var(--rose);
+  font-size: 0.95rem;
+  align-self: center;
+}
+.moments-title {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.moments-year {
+  color: var(--rose);
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+.moments-note {
+  flex-basis: 100%;
+  margin: 0.2rem 0 0;
+  color: var(--global-text-color-light);
+  font-style: italic;
+}
+
+/* justified rows: photos keep their true aspect ratio (no cropping) */
+.j-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.j-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+.j-row.is-loose {
+  justify-content: center;
+}
+.j-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+/* figure.liquid wraps the img in figure>picture; collapse them so the img sizes directly */
+.j-item figure,
+.j-item picture {
+  display: contents;
+}
+.j-item .moments-img {
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.55s ease;
+}
+/* flush row: width proportional to aspect ratio -> equal heights, fills the row */
+.j-row.is-flush .j-item {
+  flex: var(--ar) 1 0;
+  min-width: 0;
+}
+.j-row.is-flush .moments-img {
+  width: 100%;
+  height: auto;
+}
+/* loose row: single/leftover photos at natural size, centered */
+.j-row.is-loose .moments-img {
+  height: var(--row-h);
+  width: auto;
+  max-width: 100%;
+}
+
+/* fancy hover: lift, zoom, a little heart */
+.j-item:hover {
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.24);
+  transform: translateY(-3px);
+  z-index: 1;
+}
+.j-item:hover .moments-img {
+  transform: scale(1.06);
+}
+.j-item::after {
+  content: "\2764";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.55rem;
+  color: #fff;
+  font-size: 1rem;
+  opacity: 0;
+  transform: scale(0.6);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.55);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.j-item:hover::after {
+  opacity: 0.95;
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .moments-page {
+    --row-h: 12rem;
+  }
+}
+@media (max-width: 480px) {
+  .moments-page {
+    --row-h: 9.5rem;
+  }
+  .j-gallery {
+    gap: 0.4rem;
+  }
+  .j-row {
+    gap: 0.4rem;
+  }
+}
+
 @import
   "variables",
   "themes",

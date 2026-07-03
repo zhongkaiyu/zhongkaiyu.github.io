@@ -68,6 +68,12 @@ layout: default
       <script src="{{ '/assets/js/pub-filter.js' | relative_url }}"></script>
     {% endif %}
 
+    <!-- Honors & Awards -->
+    {% if site.data.awards %}
+      <h2>Honors &amp; Awards</h2>
+      {% include awards.liquid %}
+    {% endif %}
+
     <!-- Social -->
     {% if page.social %}
       <div class="social">

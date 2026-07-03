@@ -1,0 +1,8 @@
+# Honors & Awards — rendered on the homepage, right under "Selected Publications".
+# Newest first. Each entry needs `year` and `name`. Optional `url` turns the name into a link.
+- year: 2026
+  name: ISCA Best Paper Award
+- year: 2026
+  name: Qualcomm Innovation Fellowship Finalist
+- year: 2024
+  name: Lenovo Scholarship

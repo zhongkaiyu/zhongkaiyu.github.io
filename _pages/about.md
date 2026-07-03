@@ -61,7 +61,12 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 
 ## Experience
 
+- **NVIDIA Research**, 2026.6 - 2026.9. \\
+  Research Intern, Architecture Group \\
+  Manager: [Po-An Tsai](https://poantsai.me/), [Jenny Huang](https://hqjenny.com/), and [Christos Kozyrakis](https://web.stanford.edu/~kozyraki/)
 - **Samsung Semiconductor**, 2025.6 - 2025.9. \\
-  Research Intern, AGI Lab
+  Research Intern, AGI Lab \\
+  Manager: [Shuyi Pei](https://www.linkedin.com/in/shuyi-pei-091404a5/) and [Yangwook Kang](https://www.linkedin.com/in/yangwook-kang-b2091010/)
 - **Cambricon Technologies**, 2022.3 - 2024.3. \\
-  IC Design Intern, Architecture group
+  Digital IC Design Intern, Architecture Group \\
+  Manager: [Dong Han](https://patents.justia.com/inventor/dong-han) and [Shaoli Liu](https://www.semanticscholar.org/author/Shaoli-Liu/39419985)

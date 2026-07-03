@@ -1,0 +1,47 @@
+# =============================================================================
+# "Us" gallery metadata  (assets/img/moment_us/<folder>/)
+# -----------------------------------------------------------------------------
+# HOW IT WORKS
+#   * Each subfolder under assets/img/moment_us/ is ONE trip/album.
+#   * Trips are shown in folder-name order. Because folders are named
+#     <year><place> (e.g. 2024shanghai), that order is chronological.
+#   * Photos inside a trip are shown in filename order. To force an order,
+#     prefix files like 01_, 02_, ...
+#
+# ADDING PHOTOS  -> just drop image files into the trip's folder. Done.
+# ADDING A TRIP  -> create a new folder like 2026tokyo/ and drop photos in.
+#                   It appears automatically, titled "Tokyo" with year 2026.
+#                   Add an entry below only if you want a nicer title / a note.
+#
+# Every field below is OPTIONAL. Key = folder name.
+#   title: nice heading (else derived from the folder name)
+#   note:  one short line shown under the heading
+# =============================================================================
+
+2018amoy:
+  title: Amoy
+  note: Where we first began to know each other
+
+2021changsha:
+  title: Changsha & Zhangjiajie
+
+2024shanghai:
+  title: Shanghai
+
+2024dalian:
+  title: Dalian
+
+2024korea:
+  title: Seoul
+
+2024hangzhou:
+  title: Hangzhou
+
+2024disney_shanghai:
+  title: Shanghai Disneyland
+
+2025beijing:
+  title: Beijing
+
+2025shanghai:
+  title: Shanghai
