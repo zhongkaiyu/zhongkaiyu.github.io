@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Build a justified-gallery layout for the "Us" page.
+"""Build a justified-mosaic layout for the "Us" page.
 
-Reads every photo under assets/img/moment_us/<trip>/, measures its aspect ratio,
-and packs each trip's photos into rows of at most 3 photos, keeping every photo's
-TRUE aspect ratio — no cropping, no stretching. Writes _data/moments_layout.yml,
-read by _includes/moments_gallery.liquid.
+Reads every photo under assets/img/moment_us/<trip>/, measures aspect ratios, and
+arranges each trip into rows of cells that fill the width edge-to-edge while keeping
+every photo's TRUE aspect ratio (no cropping, no stretching).
 
-Rows wide enough are "flush" (stretched to both edges, widths proportional to each
-photo's aspect ratio so heights match); short rows (a single photo, or a couple of
-tall portraits) stay "loose" (natural height, centered) so nothing is blown up.
+A cell is normally ONE photo. But a very tall/narrow photo makes a row awkwardly
+tall, so when a trip has a tall photo we pair its wide photos into 2-high vertical
+STACKS: the tall photo then sits beside a couple of stacked columns, all the same
+height — a tidy mosaic (e.g. Changsha: tall shot | 2 stacked | 2 stacked).
 
-Photos in PAIRS stay together in one row (e.g. matching his/hers shots).
+Rows are kept to at most MAX_CELLS cells. Photos in PAIRS stay side by side.
 
-Re-run after adding/removing photos:  python3 _scripts/gen_moments_layout.py
+Writes _data/moments_layout.yml. Re-run after adding/removing photos:
+  python3 _scripts/gen_moments_layout.py
 """
-import math
 import os
 from PIL import Image
 
@@ -22,8 +22,9 @@ ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "assets", 
 REL_PREFIX = "assets/img/moment_us"
 OUT = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "_data", "moments_layout.yml"))
 
-MAX_PER_ROW = 3   # keep at most 3 photos per row (4 only if a pair would otherwise split)
-MIN_FLUSH = 2.0   # rows with a smaller total aspect ratio are shown loose (not stretched)
+MAX_CELLS = 3        # at most this many cells (single photo or a stack) per row
+TALL_TH = 0.62       # aspect ratio below this counts as "tall/narrow"
+MIN_FLUSH = 1.75     # rows below this total cell-aspect are shown loose (not stretched)
 
 # Photos that must stay adjacent in the same row. {folder: [[fileA, fileB], ...]}
 PAIRS = {
@@ -39,52 +40,74 @@ def trip_photos(folder):
             continue
         with Image.open(os.path.join(d, fn)) as im:
             w, h = im.size
-        out.append({"fn": fn, "rel": f"{REL_PREFIX}/{folder}/{fn}", "ar": round(w / h, 4), "paired": False})
+        out.append({"fn": fn, "rel": f"{REL_PREFIX}/{folder}/{fn}", "ar": round(w / h, 4)})
     return out
 
 
-def build_units(photos, pairs):
-    """Group photos into units; a pair becomes one atomic unit kept in one row."""
-    partner = {a: b for a, b in pairs}
-    units, i = [], 0
-    while i < len(photos):
-        fn = photos[i]["fn"]
-        if fn in partner and i + 1 < len(photos) and photos[i + 1]["fn"] == partner[fn]:
-            photos[i]["paired"] = photos[i + 1]["paired"] = True
-            units.append([photos[i], photos[i + 1]])
+def stack_ar(a, b):
+    # aspect ratio of two photos stacked vertically at equal width
+    return round((a * b) / (a + b), 4)
+
+
+def build_cells(photos, pairs):
+    """Return (cells, glue_after). Each cell is {"kind": "single"/"stack", "ar", ...}.
+    glue_after holds indices i whose cell must stay in the same row as cell i+1."""
+    talls = [p for p in photos if p["ar"] < TALL_TH]
+    if talls:
+        wides = [p for p in photos if p["ar"] >= TALL_TH]
+        cells = [{"kind": "single", "ar": t["ar"], "item": t} for t in talls]
+        i = 0
+        while i + 1 < len(wides):
+            a, b = wides[i], wides[i + 1]
+            cells.append({"kind": "stack", "ar": stack_ar(a["ar"], b["ar"]), "items": [a, b]})
             i += 2
-        else:
-            units.append([photos[i]])
-            i += 1
-    return units
+        if i < len(wides):  # leftover odd wide photo -> its own single cell
+            p = wides[i]
+            cells.append({"kind": "single", "ar": p["ar"], "item": p})
+        return cells, set()
+
+    # no tall photos: one cell per photo, keep any pair adjacent in the same row
+    partner = {a: b for a, b in pairs}
+    cells = [{"kind": "single", "ar": p["ar"], "item": p} for p in photos]
+    glue = set()
+    for i in range(len(photos) - 1):
+        if photos[i]["fn"] in partner and photos[i + 1]["fn"] == partner[photos[i]["fn"]]:
+            glue.add(i)
+    return cells, glue
 
 
-def pack(units):
-    rows, cur, cnt = [], [], 0
-    for u in units:
-        if cnt > 0 and cnt + len(u) > MAX_PER_ROW:
+def pack(cells, glue_after):
+    rows, cur = [], []
+    for idx, c in enumerate(cells):
+        if len(cur) >= MAX_CELLS and (idx - 1) not in glue_after:
             rows.append(cur)
-            cur, cnt = [], 0
-        cur.extend(u)
-        cnt += len(u)
+            cur = []
+        cur.append(c)
     if cur:
         rows.append(cur)
-    # avoid a lonely trailing single: turn 3+1 into 2+2, unless that splits a pair (then 4)
+    # avoid a lonely trailing single cell: 3+1 -> 2+2 (safe: the moved cell is never paired)
     if len(rows) >= 2 and len(rows[-1]) == 1:
-        prev = rows[-2]
-        if len(prev) >= 2 and not (prev[-1]["paired"] and prev[-2]["paired"]):
-            rows[-1].insert(0, prev.pop())
-        else:
-            prev.extend(rows.pop())
+        rows[-1].insert(0, rows[-2].pop())
     return rows
+
+
+def emit_cell(lines, c):
+    if c["kind"] == "stack":
+        lines.append(f"          - {{ ar: {c['ar']}, stack: [")
+        for p in c["items"]:
+            lines.append(f'              {{ rel: "{p["rel"]}", ar: {p["ar"]} }},')
+        lines.append("            ] }")
+    else:
+        p = c["item"]
+        lines.append(f'          - {{ ar: {c["ar"]}, rel: "{p["rel"]}" }}')
 
 
 def main():
     folders = sorted(f for f in os.listdir(ROOT) if os.path.isdir(os.path.join(ROOT, f)))
     lines = [
         "# AUTO-GENERATED by _scripts/gen_moments_layout.py — do not edit by hand.",
-        "# Justified-gallery rows for the Us page (<=3 photos/row, aspect ratios preserved).",
-        "# Re-run the script after adding or removing photos.",
+        "# Justified-mosaic rows for the Us page (aspect ratios preserved; tall photos",
+        "# get 2-high stacked neighbours). Re-run after adding or removing photos.",
         "trips:",
     ]
     total = 0
@@ -92,17 +115,18 @@ def main():
         photos = trip_photos(folder)
         if not photos:
             continue
-        rows = pack(build_units(photos, PAIRS.get(folder, [])))
+        rows = pack(*build_cells(photos, PAIRS.get(folder, [])))
         lines.append(f'  - folder: "{folder}"')
         lines.append("    rows:")
         for row in rows:
-            s = sum(p["ar"] for p in row)
-            flush = "true" if (len(row) > 1 and s >= MIN_FLUSH) else "false"
+            s = sum(c["ar"] for c in row)
+            has_stack = any(c["kind"] == "stack" for c in row)
+            flush = "true" if (len(row) > 1 and (has_stack or s >= MIN_FLUSH)) else "false"
             lines.append(f"      - flush: {flush}")
-            lines.append("        items:")
-            for p in row:
-                lines.append(f'          - {{ rel: "{p["rel"]}", ar: {p["ar"]} }}')
-                total += 1
+            lines.append("        cells:")
+            for c in row:
+                emit_cell(lines, c)
+                total += 1 if c["kind"] == "single" else len(c["items"])
     with open(OUT, "w") as f:
         f.write("\n".join(lines) + "\n")
     print(f"wrote {OUT}  ({total} photos, {len(folders)} trips)")
