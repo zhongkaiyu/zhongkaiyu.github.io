@@ -1,5 +1,6 @@
 // Playful love animations + hidden easter eggs for the "Us" page.
 // Runs only where .moments-page exists. Respects prefers-reduced-motion.
+// (redeploy trigger: GitHub Pages publish retry)
 (function () {
   var page = document.querySelector(".moments-page");
   if (!page) return;
