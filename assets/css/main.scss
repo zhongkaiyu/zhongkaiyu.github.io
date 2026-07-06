@@ -208,14 +208,25 @@ html[data-theme="dark"] .moments-page {
   background: rgba(0, 0, 0, 0.05);
   transition: transform 0.55s ease;
 }
-/* flush row: width proportional to aspect ratio -> equal heights, fills the row */
-.j-row.is-flush .j-item {
+/* flush row: cell width proportional to aspect ratio -> equal heights, fills the row.
+   A cell is a direct child of the row: a single .j-item, or a .j-stack (2 stacked). */
+.j-row.is-flush > .j-item,
+.j-row.is-flush > .j-stack {
   flex: var(--ar) 1 0;
   min-width: 0;
 }
 .j-row.is-flush .moments-img {
   width: 100%;
   height: auto;
+}
+/* a stack: two photos one above the other, filling the cell height together */
+.j-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.j-stack > .j-item {
+  width: 100%;
 }
 /* loose row: single/leftover photos at natural size, centered */
 .j-row.is-loose .moments-img {
@@ -298,6 +309,47 @@ html[data-theme="dark"] .moments-page {
   }
 }
 
+/* playful hearts + secret toast (moments-magic.js) */
+.magic-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1050;
+}
+.magic-heart {
+  position: fixed;
+  will-change: transform, opacity;
+  user-select: none;
+  line-height: 1;
+}
+.magic-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 9%;
+  transform: translateX(-50%) translateY(18px);
+  background: rgba(227, 93, 106, 0.96);
+  color: #fff;
+  padding: 0.62rem 1.15rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  z-index: 1100;
+}
+.magic-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .magic-layer {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .moments-page {
     --row-h: 12rem;
@@ -310,7 +362,8 @@ html[data-theme="dark"] .moments-page {
   .j-gallery {
     gap: 0.4rem;
   }
-  .j-row {
+  .j-row,
+  .j-stack {
     gap: 0.4rem;
   }
 }

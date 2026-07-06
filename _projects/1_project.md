@@ -31,3 +31,5 @@ related_publications: false
     rows.forEach(function (r) { io.observe(r); });
   })();
 </script>
+
+<script src="{{ '/assets/js/moments-magic.js' | relative_url }}" defer></script>
