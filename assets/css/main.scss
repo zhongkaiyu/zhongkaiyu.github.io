@@ -204,6 +204,8 @@ html[data-theme="dark"] .moments-page {
 .j-item .moments-img {
   display: block;
   cursor: zoom-in;
+  aspect-ratio: var(--ar); /* reserve space before the thumbnail loads (prevents layout shift + enables lazy-load) */
+  background: rgba(0, 0, 0, 0.05);
   transition: transform 0.55s ease;
 }
 /* flush row: width proportional to aspect ratio -> equal heights, fills the row */
@@ -222,10 +224,10 @@ html[data-theme="dark"] .moments-page {
   max-width: 100%;
 }
 
-/* fancy hover: lift, zoom, a little heart */
+/* fancy hover: lift, zoom, a rose glow, a little heart */
 .j-item:hover {
-  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.24);
-  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24), 0 0 0 3px rgba(227, 93, 106, 0.6);
+  transform: translateY(-4px);
   z-index: 1;
 }
 .j-item:hover .moments-img {
@@ -247,6 +249,53 @@ html[data-theme="dark"] .moments-page {
 .j-item:hover::after {
   opacity: 0.95;
   transform: scale(1);
+  animation: heart-pop 0.45s ease;
+}
+
+/* cute animations + extra romance */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.28); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.18); }
+  60% { transform: scale(1); }
+}
+@keyframes heart-pop {
+  0% { transform: scale(0.4) rotate(-12deg); }
+  60% { transform: scale(1.25) rotate(7deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+.moments-heart,
+.moments-intro .heart,
+.moments-outro .heart {
+  display: inline-block;
+  transform-origin: center;
+  animation: heartbeat 1.8s ease-in-out infinite;
+}
+/* gentle reveal-on-scroll (JS adds .reveal, then .in when in view) */
+.j-row.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.j-row.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .moments-heart,
+  .moments-intro .heart,
+  .moments-outro .heart {
+    animation: none;
+  }
+  .j-item:hover::after {
+    animation: none;
+  }
+  .j-row.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (max-width: 768px) {

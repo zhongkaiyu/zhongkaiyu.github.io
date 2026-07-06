@@ -34,8 +34,9 @@
       {% for row in trip.rows %}
         <div class="j-row {% if row.flush %}is-flush{% else %}is-loose{% endif %}">
           {% for it in row.items %}
+            {% assign thumb = it.rel | replace: "moment_us/", "moment_us_thumb/" %}
             <div class="j-item" style="--ar: {{ it.ar }};">
-              {% include figure.liquid path=it.rel class="moments-img" zoomable=true %}
+              <img class="moments-img" src="{{ thumb | relative_url }}" data-zoom-src="{{ it.rel | relative_url }}" data-zoomable loading="lazy" alt="" />
             </div>
           {% endfor %}
         </div>

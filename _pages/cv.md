@@ -1,15 +1,11 @@
 ---
-layout: page
+layout: cv
 permalink: /cv/
-title: CV
-nav: true
+title: cv
+nav: false
 nav_order: 5
-description: My latest curriculum vitae. The PDF below is always the current version.
+cv_pdf: example_pdf.pdf # you can also use external links here
+description: This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.
+toc:
+  sidebar: left
 ---
-
-<div class="cv-pdf-wrapper">
-  <a class="btn btn-sm z-depth-0 cv-download-btn" href="{{ '/assets/pdf/Zhongkai_Yu_CV.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">
-    <i class="fa-solid fa-file-pdf"></i>&nbsp; Download / Open PDF
-  </a>
-  <iframe class="cv-pdf-frame" src="{{ '/assets/pdf/Zhongkai_Yu_CV.pdf' | relative_url }}" title="Zhongkai Yu — Curriculum Vitae" loading="lazy"></iframe>
-</div>

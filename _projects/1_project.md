@@ -17,3 +17,17 @@ related_publications: false
 <p class="moments-outro"><span class="heart">&#10084;</span>&nbsp; to be continued</p>
 
 </div>
+
+<script>
+  (function () {
+    var rows = document.querySelectorAll(".moments-page .j-row");
+    if (!rows.length || !("IntersectionObserver" in window)) return;
+    rows.forEach(function (r) { r.classList.add("reveal"); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
+    rows.forEach(function (r) { io.observe(r); });
+  })();
+</script>
