@@ -25,7 +25,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am currently a second-year PhD student in the CSE department of UC San Diego (since 2024), working with Prof.[Yufei Ding](https://sites.google.com/ucsd.edu/yufeiding/people/prof-yufei-ding). Before coming to UCSD, I obtained my master's degree from Institute of Computing Technology, Chinese Academy of Sciences, under the supervision of Prof. [Yunji Chen](https://novel.ict.ac.cn/ychen/). Prior to that, I received my bachelor's degree from Shanghai Jiao Tong University.
+I am currently a second-year PhD student in the CSE department of UC San Diego (since 2024), working with Prof.[Yufei Ding](https://sites.google.com/ucsd.edu/yufeiding/people/prof-yufei-ding). Before coming to UCSD, I obtained my master's degree from Institute of Computing Technology, Chinese Academy of Sciences (ICT, CAS), under the supervision of Prof. [Yunji Chen](https://novel.ict.ac.cn/ychen/) and Prof. [Xing Hu](https://xinghu-cs.github.io/). Prior to that, I received my bachelor's degree from Shanghai Jiao Tong University (SJTU).
 
 My research centers on the co-evolution of LLM and hardware systems: I explore novel architectures and systems to accelerate LLM workloads, while harnessing LLMs to advance chip design. My work lies at the intersection of Computer Architecture, ML Systems, and AI4Chip.
 
