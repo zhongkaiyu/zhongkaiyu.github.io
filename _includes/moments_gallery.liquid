@@ -12,49 +12,67 @@
 {%- endcomment -%}
 
 <div class="moments">
-{% for trip in site.data.moments_layout.trips %}
-  {% assign folder = trip.folder %}
-  {% assign meta = site.data.moments_us[folder] %}
-  {% assign year = folder | slice: 0, 4 %}
-  {% assign ynum = year | plus: 0 %}
-  {% if meta.title %}
-    {% assign title = meta.title %}
-  {% elsif ynum > 1900 %}
-    {% assign title = folder | slice: 4, 40 | replace: "_", " " | replace: "-", " " | capitalize %}
-  {% else %}
-    {% assign title = folder | replace: "_", " " | replace: "-", " " | capitalize %}
-  {% endif %}
+  {% for trip in site.data.moments_layout.trips %}
+    {% assign folder = trip.folder %}
+    {% assign meta = site.data.moments_us[folder] %}
+    {% assign year = folder | slice: 0, 4 %}
+    {% assign ynum = year | plus: 0 %}
+    {% if meta.title %}
+      {% assign title = meta.title %}
+    {% elsif ynum > 1900 %}
+      {% assign title = folder | slice: 4, 40 | replace: '_', ' ' | replace: '-', ' ' | capitalize %}
+    {% else %}
+      {% assign title = folder | replace: '_', ' ' | replace: '-', ' ' | capitalize %}
+    {% endif %}
 
-  <section class="moments-album">
-    <div class="moments-album-head">
-      <span class="moments-heart" aria-hidden="true">&#10084;</span>
-      <h2 class="moments-title">{{ title }}</h2>
-      {% if ynum > 1900 %}<span class="moments-year">{{ year }}</span>{% endif %}
-      {% if meta.note %}<p class="moments-note">{{ meta.note }}</p>{% endif %}
-    </div>
-    <div class="j-gallery">
-      {% for row in trip.rows %}
-        <div class="j-row {% if row.flush %}is-flush{% else %}is-loose{% endif %}">
-          {% for cell in row.cells %}
-            {% if cell.stack %}
-              <div class="j-stack" style="--ar: {{ cell.ar }};">
-                {% for p in cell.stack %}
-                  {% assign thumb = p.rel | replace: "moment_us/", "moment_us_thumb/" %}
-                  <div class="j-item" style="--ar: {{ p.ar }};">
-                    <img class="moments-img" src="{{ thumb | relative_url }}" data-zoom-src="{{ p.rel | relative_url }}" data-zoomable loading="lazy" alt="" />
-                  </div>
-                {% endfor %}
-              </div>
-            {% else %}
-              {% assign thumb = cell.rel | replace: "moment_us/", "moment_us_thumb/" %}
-              <div class="j-item" style="--ar: {{ cell.ar }};">
-                <img class="moments-img" src="{{ thumb | relative_url }}" data-zoom-src="{{ cell.rel | relative_url }}" data-zoomable loading="lazy" alt="" />
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% endfor %}
-    </div>
-  </section>
-{% endfor %}
+    <section class="moments-album">
+      <div class="moments-album-head">
+        <span class="moments-heart" aria-hidden="true">&#10084;</span>
+        <h2 class="moments-title">{{ title }}</h2>
+        {% if ynum > 1900 -%}
+          <span class="moments-year">{{ year }}</span>
+        {%- endif %}
+        {% if meta.note %}
+          <p class="moments-note">{{ meta.note }}</p>
+        {% endif %}
+      </div>
+      <div class="j-gallery">
+        {% for row in trip.rows %}
+          <div class="j-row {% if row.flush %}is-flush{% else %}is-loose{% endif %}">
+            {% for cell in row.cells %}
+              {% if cell.stack %}
+                <div class="j-stack" style="--ar: {{ cell.ar }};">
+                  {% for p in cell.stack %}
+                    {% assign thumb = p.rel | replace: 'moment_us/', 'moment_us_thumb/' %}
+                    <div class="j-item" style="--ar: {{ p.ar }};">
+                      <img
+                        class="moments-img"
+                        src="{{ thumb | relative_url }}"
+                        data-zoom-src="{{ p.rel | relative_url }}"
+                        data-zoomable
+                        loading="lazy"
+                        alt=""
+                      >
+                    </div>
+                  {% endfor %}
+                </div>
+              {% else %}
+                {% assign thumb = cell.rel | replace: 'moment_us/', 'moment_us_thumb/' %}
+                <div class="j-item" style="--ar: {{ cell.ar }};">
+                  <img
+                    class="moments-img"
+                    src="{{ thumb | relative_url }}"
+                    data-zoom-src="{{ cell.rel | relative_url }}"
+                    data-zoomable
+                    loading="lazy"
+                    alt=""
+                  >
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
 </div>
