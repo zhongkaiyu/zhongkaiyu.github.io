@@ -79,7 +79,8 @@ ninja.data = [
     {%- endfor -%}
   {%- endif -%}
   {%- for collection in site.collections -%}
-    {%- if collection.label != 'posts' -%}
+    {%- comment -%} only index real content collections; skip template demos (books, news) {%- endcomment -%}
+    {%- if collection.label == 'projects' -%}
       {%- for item in collection.docs -%}
         {
           {%- if item.inline -%}
