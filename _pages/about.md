@@ -29,7 +29,7 @@ I am currently a second-year PhD student in the CSE department of UC San Diego (
 
 My research centers on the co-evolution of LLM and hardware systems: I explore novel architectures and systems to accelerate LLM workloads, while harnessing LLMs to advance chip design. My work lies at the intersection of Computer Architecture, ML Systems, and AI4Chip.
 
-Also, shout-out to my roommate Zaifeng, who is an expert in kernels, systems, and "cooking". Check out his [homepage and research](https://panzaifeng.github.io).
+Also, shout-out to my roommate Zaifeng, who is an expert in kernels, systems, and "[cooking](https://panzaifeng.github.io/moments/)". Check out his [homepage and research](https://panzaifeng.github.io).
 
 <!-- , aimming for efficiently deploying AI algorithms in vareid hardware. -->
 
