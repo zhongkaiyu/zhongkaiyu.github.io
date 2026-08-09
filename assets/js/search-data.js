@@ -35,6 +35,11 @@ ninja.data = [{
           description: "The places we love, made better because we were there together.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
+            },},{id: "projects-isca-2026-best-paper-award",
+          title: 'ISCA 2026 Best Paper Award',
+          description: "Patterns behind Chaos received the 2026 ACM SIGARCH / IEEE CS TCCA ISCA Best Paper Award (2/845).",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/2_isca_best_paper/";
             },},{
         id: 'social-email',
         title: 'email',
