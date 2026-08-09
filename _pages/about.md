@@ -62,7 +62,7 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 ## Experience
 
 - **NVIDIA Research**, 2026.6 - 2026.9. \\
-  Research Intern, Architecture Group \\
+  Research Intern, Architecture Research Group (ARG) \\
   Manager: [Po-An Tsai](https://poantsai.me/), [Jenny Huang](https://hqjenny.com/), and [Christos Kozyrakis](https://web.stanford.edu/~kozyraki/)
 - **Samsung Semiconductor**, 2025.6 - 2025.9. \\
   Research Intern, AGI Lab \\
