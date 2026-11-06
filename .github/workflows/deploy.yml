@@ -98,8 +98,15 @@ jobs:
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Validate and prepare Pages output
+        run: |
+          test -s _site/index.html
+          test -s _site/assets/css/main.css
+          # The site is already built; Pages must serve it without running Jekyll again.
+          touch _site/.nojekyll
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          branch: gh-pages
           folder: _site
