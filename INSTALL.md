@@ -29,11 +29,10 @@
 The recommended approach for using **al-folio** is to first create your own site using the template with as few changes as possible, and only when it is up and running customize it however you like. This way it is easier to pinpoint what causes a potential issue in case of a bug. The minimum steps required to create your own site are ([video tutorial here](assets/video/tutorial_al_folio.mp4)):
 
 1. Create a new repository using this template. For this, click on [Use this template -> Create a new repository](https://github.com/new?template_name=al-folio&template_owner=alshedivat) above the file list. If you plan to upload your site to `<your-github-username>.github.io`, note that the name of your repository :warning: **MUST BE** :warning: `<your-github-username>.github.io` or `<your-github-orgname>.github.io`, as stated in the [GitHub pages docs](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#types-of-github-pages-sites).
-2. In this new repository, go to [Settings -> Actions -> General -> Workflow permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-default-github_token-permissions) and give `Read and write permissions` to GitHub Actions.
+2. In this new repository, enable GitHub Actions and set `Settings -> Pages -> Build and deployment -> Source` to `GitHub Actions`. The deployment workflow declares the permissions it needs.
 3. Open file `_config.yml`, set `url` to `https://<your-github-username>.github.io` and leave `baseurl` **empty** (do NOT delete it), as `baseurl:`.
-4. Wait until the GitHub action with subtitle `Deploy site` finishes (check your repository **Actions** tab), which takes ~4 min. Now, in addition to the `main` branch, your repository has a newly built `gh-pages` branch.
-5. Finally, in the repository page go to `Settings -> Pages -> Build and deployment`, make sure that `Source` is set to `Deploy from a branch` and set the branch to `gh-pages` (NOT to main).
-6. Wait until the GitHub action `pages-build-deployment` finishes (check your repository **Actions** tab), which takes ~45s, then simply navigate to `https://<your-github-username>.github.io` in your browser. At this point you should see a copy of the theme's [demo website](https://alshedivat.github.io/al-folio/).
+4. Push your changes to `main` and wait for both the `build` and `deploy` jobs in `Deploy site` to finish (check your repository **Actions** tab). The workflow builds the theme with its custom plugins and publishes the generated artifact directly to GitHub Pages. It does not update or publish from `gh-pages`.
+5. Navigate to `https://<your-github-username>.github.io` in your browser. At this point you should see your website.
    After everything is set up, you can download the repository to your machine and start customizing it. To do so, run the following commands:
 
 ```bash
@@ -153,16 +152,16 @@ Starting version [v0.3.5](https://github.com/alshedivat/al-folio/releases/tag/v0
 ### Enabling automatic deployment
 
 1. Click on **Actions** tab and **Enable GitHub Actions**; do not worry about creating any workflows as everything has already been set for you.
-2. Go to `Settings -> Actions -> General -> Workflow permissions`, and give `Read and write permissions` to GitHub Actions
-3. Make any other changes to your webpage, commit, and push to your main branch. This will automatically trigger the **Deploy** action.
-4. Wait for a few minutes and let the action complete. You can see the progress in the **Actions** tab. If completed successfully, in addition to the `main` branch, your repository should now have a newly built `gh-pages` branch. **Do NOT touch this branch!**
-5. Finally, in the **Settings** of your repository, in the Pages section, set the branch to `gh-pages` (**NOT** to `main`). For more details, see [Configuring a publishing source for your GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source).
+2. Set `Settings -> Pages -> Build and deployment -> Source` to `GitHub Actions`. Do not select `Deploy from a branch` with `main`: the built-in Jekyll builder cannot load this theme's custom plugins.
+3. Make changes to your webpage, commit, and push to `main`. This automatically triggers **Deploy site**.
+4. Wait for both the `build` and `deploy` jobs to succeed. The build job uploads `_site` as a Pages artifact, and the deployment job publishes it directly. The `gh-pages` branch is no longer required.
+5. If the `github-pages` environment has branch restrictions, allow deployments from `main` under `Settings -> Environments -> github-pages`. For more details, see [Using custom workflows with GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
-If you keep your site on another branch, open `.github/workflows/deploy.yml` **on the branch you keep your website on** and change `on->push->branches` and `on->pull\_request->branches` to the branch you keep your website on. This will trigger the action on pulls/pushes on that branch. The action will then deploy the website on the branch it was triggered from.
+Pull requests targeting `main` are built for validation but are not deployed. If you change the source branch, update both the workflow's branch triggers and its `refs/heads/main` upload/deployment conditions, as well as any environment branch restrictions.
 
 ### Manual deployment to GitHub Pages
 
-If you need to manually re-deploy your website to GitHub pages, go to Actions, click "Deploy" in the left sidebar, then "Run workflow."
+If you need to manually re-deploy your website to GitHub Pages, go to Actions, click "Deploy site" in the left sidebar, then "Run workflow" with branch `main` selected.
 
 ### Deploy on [Netlify](https://www.netlify.com/)
 

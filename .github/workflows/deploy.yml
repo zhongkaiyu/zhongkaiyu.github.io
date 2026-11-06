@@ -3,7 +3,6 @@ name: Deploy site
 on:
   push:
     branches:
-      - master
       - main
     paths:
       - "assets/**"
@@ -32,7 +31,6 @@ on:
       - "!README.md"
   pull_request:
     branches:
-      - master
       - main
     paths:
       - "assets/**"
@@ -62,10 +60,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     # available images: https://github.com/actions/runner-images#available-images
     runs-on: ubuntu-latest
     steps:
@@ -104,9 +106,23 @@ jobs:
           test -s _site/assets/css/main.css
           # The site is already built; Pages must serve it without running Jekyll again.
           touch _site/.nojekyll
-      - name: Deploy 🚀
-        if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v4
         with:
-          branch: gh-pages
-          folder: _site
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
